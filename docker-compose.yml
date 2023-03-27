@@ -6,6 +6,7 @@ services:
     ports:
       - '80:80'
   php:
-    image: php:8.2-fpm
+    build:
+      context: ./.docker/php
     volumes:
      -  .:/app
