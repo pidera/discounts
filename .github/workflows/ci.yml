@@ -1,0 +1,24 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+    tests:
+        name: CI PHP
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+
+            - name: Set up PHP
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: 8.2
+
+            - name: Install dependencies with Composer
+              uses: ramsey/composer-install@v2
+
+            - name: Coding standards
+              if: matrix.analysis
+              run: vendor/bin/phpcs

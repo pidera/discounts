@@ -15,3 +15,10 @@ To setup the application locally (install composer packages etc...), run:
 ```
 sh install.sh
 ```
+
+## Run code quality checks
+
+To run the code quality checks, run:
+```
+sh checks.sh
+```

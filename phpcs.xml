@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<ruleset name="Code style checks">
+    <arg value="p"/>
+    <arg name="colors"/>
+
+    <rule ref="PSR12">
+        <!-- Allow declare strict right below opening php tag -->
+        <exclude name="PSR12.Files.FileHeader.SpacingAfterBlock"/>
+        <!-- Allow closing brace on the same line (for constructors with promoted arguments) -->
+        <exclude name="Squiz.WhiteSpace.ScopeClosingBrace.ContentBefore"/>
+    </rule>
+
+    <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
+    <rule ref="Generic.WhiteSpace.SpreadOperatorSpacingAfter" />
+
+    <file>src</file>
+</ruleset>
