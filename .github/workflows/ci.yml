@@ -24,3 +24,6 @@ jobs:
 
             - name: Static analysis
               run: vendor/bin/phpstan
+
+            - name: Test suite
+              run: vendor/bin/phpunit
