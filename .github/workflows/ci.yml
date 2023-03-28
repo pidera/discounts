@@ -22,7 +22,7 @@ jobs:
               uses: ramsey/composer-install@v2
 
             - name: Coding standards
-              run: vendor/bin/phpcs -n --report=checkstyle | cs2pr
+              run: vendor/bin/phpcs -n
 
             - name: Static analysis
               run: vendor/bin/phpstan --no-progress --error-format=checkstyle | cs2pr
