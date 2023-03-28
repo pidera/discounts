@@ -11,6 +11,7 @@ require dirname(__DIR__) . '/vendor/autoload.php';
 
 $containerBuilder = new ContainerBuilder();
 $containerBuilder->enableCompilation(dirname(__DIR__) . '/var/cache');
+$containerBuilder->addDefinitions('../app/variables.php');
 $containerBuilder->addDefinitions('../app/services.php');
 $app = Bridge::create($containerBuilder->build());
 
