@@ -13,7 +13,9 @@ $containerBuilder = new ContainerBuilder();
 $containerBuilder->enableCompilation(dirname(__DIR__) . '/var/cache');
 $containerBuilder->addDefinitions('../app/variables.php');
 $containerBuilder->addDefinitions('../app/services.php');
+
 $app = Bridge::create($containerBuilder->build());
+$app->addBodyParsingMiddleware();
 
 $routes = require dirname(__DIR__) . '/app/routes.php';
 $routes($app);
