@@ -41,7 +41,12 @@ final class DiscountTest extends TestCase
                     ],
                     'total' => '49.90',
                 ],
-                'response' => [],
+                'response' => [
+                    [
+                        'description' => 'For every product of category "Switches", when you buy five, you get a sixth for free.',
+                        'amount' => Money::EUR(4.99)->getAmount(),
+                    ],
+                ],
             ],
             [
                 'request' => [
