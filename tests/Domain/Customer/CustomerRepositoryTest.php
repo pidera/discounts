@@ -5,26 +5,15 @@ declare(strict_types=1);
 namespace Tests\Domain\Customer;
 
 use App\Domain\Customer\CustomerId;
-use App\Domain\Customer\CustomerRepositoryInterface;
 use App\Infrastructure\Repository\InMemory\CustomerInMemoryRepository;
 use Money\Money;
 use Tests\TestCase;
 
 final class CustomerRepositoryTest extends TestCase
 {
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->getContainer()->set(
-            CustomerRepositoryInterface::class,
-            new CustomerInMemoryRepository($this->customerData())
-        );
-    }
-
     public function testGettingCustomerByID(): void
     {
-        $repository = $this->getContainer()->get(CustomerRepositoryInterface::class);
+        $repository = new CustomerInMemoryRepository($this->customerData());
 
         $customer = $repository->getById(new CustomerId('2'));
 

@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace App\Presentation\Action;
 
+use App\Application\Factory\OrderFactory;
 use App\Application\Service\DiscountCalculator;
-use App\Domain\Order\Order;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 final readonly class DiscountAction
 {
     public function __construct(
+        private OrderFactory $orderFactory,
         private DiscountCalculator $discountCalculator,
     ) {}
 
@@ -21,7 +22,8 @@ final readonly class DiscountAction
 
         // @todo validate data input
 
-        $discounts = $this->discountCalculator->calculateForOrder(Order::fromArray($requestData));
+        $order = $this->orderFactory->createOrderFromArray($requestData);
+        $discounts = $this->discountCalculator->calculateForOrder($order);
 
         $response->getBody()->write(\json_encode($discounts, JSON_THROW_ON_ERROR));
         return $response->withHeader('Content-Type', 'application/json');

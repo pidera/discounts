@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Domain\Discount;
 
+use App\Domain\Discount\Condition\DiscountCondition;
+use App\Domain\Discount\Effect\DiscountEffect;
 use App\Domain\Order\Order;
 use Money\Money;
 
@@ -21,9 +23,13 @@ final readonly class Discount
 
     public function appliesForOrder(Order $order): bool
     {
-        // @todo check if each condition is fulfilled
+        foreach ($this->conditions as $condition) {
+            if (!$condition->appliesForOrder($order)) {
+                return false;
+            }
+        }
 
-        return false;
+        return true;
     }
 
     public function getDescription(): string
@@ -33,6 +39,11 @@ final readonly class Discount
 
     public function getAppliedAmount(Order $order): Money
     {
-        return $order->total;
+        $amount = Money::EUR(0);
+        foreach ($this->effects as $effect) {
+            $amount = $effect->addDiscountEffect($amount, $order);
+        }
+
+        return $amount;
     }
 }
