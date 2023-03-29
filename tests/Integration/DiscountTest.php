@@ -44,7 +44,7 @@ final class DiscountTest extends TestCase
                 'response' => [
                     [
                         'description' => 'For every product of category "Switches", when you buy five, you get a sixth for free.',
-                        'amount' => Money::EUR(4.99)->getAmount(),
+                        'amount' => Money::EUR(4.99)->formattedString(),
                     ],
                 ],
             ],
@@ -65,7 +65,7 @@ final class DiscountTest extends TestCase
                 'response' => [
                     [
                         'description' => 'Our valued customers get 10% discount on their order',
-                        'amount' => Money::EUR(2.495)->getAmount(),
+                        'amount' => Money::EUR(2.495)->formattedString(),
                     ]
                 ],
             ],
@@ -89,7 +89,12 @@ final class DiscountTest extends TestCase
                     ],
                     'total' => '69.00',
                 ],
-                'response' => [],
+                'response' => [
+                    [
+                        'description' => 'If you buy two or more products of category "Tools", you get a 20% discount on the cheapest product.',
+                        'amount' => Money::EUR(1.95)->formattedString(),
+                    ]
+                ],
             ],
         ];
     }
