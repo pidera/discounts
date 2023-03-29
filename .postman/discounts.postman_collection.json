@@ -1,0 +1,79 @@
+{
+	"info": {
+		"_postman_id": "b12dfff8-e9a8-4468-867e-e9ea5aa1072f",
+		"name": "Discounts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13698117"
+	},
+	"item": [
+		{
+			"name": "Order 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": \"1\",\n  \"customer-id\": \"1\",\n  \"items\": [\n    {\n      \"product-id\": \"B102\",\n      \"quantity\": \"10\",\n      \"unit-price\": \"4.99\",\n      \"total\": \"49.90\"\n    }\n  ],\n  \"total\": \"49.90\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost",
+					"host": [
+						"localhost"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": \"2\",\n  \"customer-id\": \"2\",\n  \"items\": [\n    {\n      \"product-id\": \"B102\",\n      \"quantity\": \"5\",\n      \"unit-price\": \"4.99\",\n      \"total\": \"24.95\"\n    }\n  ],\n  \"total\": \"24.95\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost",
+					"host": [
+						"localhost"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order 3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": \"3\",\n  \"customer-id\": \"3\",\n  \"items\": [\n    {\n      \"product-id\": \"A101\",\n      \"quantity\": \"2\",\n      \"unit-price\": \"9.75\",\n      \"total\": \"19.50\"\n    },\n    {\n      \"product-id\": \"A102\",\n      \"quantity\": \"1\",\n      \"unit-price\": \"49.50\",\n      \"total\": \"49.50\"\n    }\n  ],\n  \"total\": \"69.00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost",
+					"host": [
+						"localhost"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

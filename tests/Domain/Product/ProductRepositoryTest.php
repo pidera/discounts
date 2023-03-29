@@ -4,26 +4,15 @@ declare(strict_types=1);
 namespace Tests\Domain\Product;
 
 use App\Domain\Product\ProductId;
-use App\Domain\Product\ProductRepositoryInterface;
 use App\Infrastructure\Repository\InMemory\ProductInMemoryRepository;
 use Money\Money;
 use Tests\TestCase;
 
 final class ProductRepositoryTest extends TestCase
 {
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->getContainer()->set(
-            ProductRepositoryInterface::class,
-            new ProductInMemoryRepository($this->productData())
-        );
-    }
-
     public function testGettingCustomerByID(): void
     {
-        $repository = $this->getContainer()->get(ProductRepositoryInterface::class);
+        $repository = new ProductInMemoryRepository($this->productData());
 
         $product = $repository->getById(new ProductId('EAT042'));
 
