@@ -19,6 +19,8 @@ use App\Infrastructure\Repository\File\ProductFileRepository;
 use League\Flysystem\FilesystemAdapter;
 use League\Flysystem\Local\LocalFilesystemAdapter;
 use Money\Money;
+use Symfony\Component\Validator\Validation;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 $discountDefinitions = [
     new Discount(
@@ -43,4 +45,5 @@ return [
     CustomerRepositoryInterface::class => \DI\autowire(CustomerFileRepository::class),
     ProductRepositoryInterface::class => \DI\autowire(ProductFileRepository::class),
     DiscountCalculator::class => \DI\create(DiscountCalculator::class)->constructor($discountDefinitions),
+    ValidatorInterface::class => Validation::createValidator(),
 ];

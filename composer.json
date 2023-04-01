@@ -26,7 +26,8 @@
         "php-di/php-di": "^7.0",
         "php-di/slim-bridge": "^3.3",
         "slim/psr7": "^1.5",
-        "slim/slim": "^4.10"
+        "slim/slim": "^4.10",
+        "symfony/validator": "^6.2"
     },
     "require-dev": {
         "phpstan/phpstan": "^1.10",

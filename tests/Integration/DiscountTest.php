@@ -24,6 +24,24 @@ final class DiscountTest extends TestCase
         $this->assertEquals($responseData, \json_decode($response->getBody()->getContents(), true, 512, JSON_THROW_ON_ERROR));
     }
 
+    public function testValidationErrorResponse(): void
+    {
+        $app = $this->getAppInstance();
+
+        $request = $this->createRequest('POST', '/')->withParsedBody([]);
+        $response = $app->handle($request);
+
+        $this->assertEquals(StatusCodeInterface::STATUS_BAD_REQUEST, $response->getStatusCode());
+
+        $errorData = \array_map(static fn(string $fieldName): array => [
+            'field' => '[' . $fieldName . ']',
+            'error' => 'This field is missing.',
+        ], ['id', 'customer-id', 'items', 'total']);
+
+        $response->getBody()->rewind();
+        $this->assertEquals($errorData, \json_decode($response->getBody()->getContents(), true, 512, JSON_THROW_ON_ERROR));
+    }
+
     public static function orderData(): array
     {
         return [
