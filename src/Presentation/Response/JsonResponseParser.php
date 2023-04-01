@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Presentation\Response;
 
+use _PHPStan_cbfb23d84\Fig\Http\Message\StatusCodeInterface;
 use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\Validator\ConstraintViolation;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
@@ -30,6 +31,6 @@ final class JsonResponseParser
             ];
         }
 
-        return $this->parse($violations, $response);
+        return $this->parse($violations, $response)->withStatus(StatusCodeInterface::STATUS_BAD_REQUEST);
     }
 }
